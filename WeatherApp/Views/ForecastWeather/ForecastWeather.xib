@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ForecastWeather" customModule="WeatherApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="290"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather Forecast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N39-ga-TZ8">
+                    <rect key="frame" x="120.00000000000001" y="10" width="135.33333333333337" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunny skies for days" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBd-f5-2Lp">
+                    <rect key="frame" x="10" y="187" width="355" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="☀️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s4n-dR-6tE">
+                    <rect key="frame" x="150" y="93.333333333333314" width="75" height="83.666666666666686"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="70"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.96862745100000003" green="0.58039215690000001" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fBd-f5-2Lp" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="7vE-2d-gEZ"/>
+                <constraint firstItem="fBd-f5-2Lp" firstAttribute="top" secondItem="s4n-dR-6tE" secondAttribute="bottom" constant="10" id="K6p-Gk-ZK3"/>
+                <constraint firstItem="N39-ga-TZ8" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="VEQ-A6-5lN"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fBd-f5-2Lp" secondAttribute="trailing" constant="10" id="Xad-rM-asr"/>
+                <constraint firstItem="fBd-f5-2Lp" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dBr-i3-Bpe"/>
+                <constraint firstItem="N39-ga-TZ8" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="mHs-dL-XHY"/>
+                <constraint firstItem="s4n-dR-6tE" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="x2H-lM-Loh"/>
+                <constraint firstItem="s4n-dR-6tE" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-10" id="yeO-SS-ykX"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="forecast" destination="fBd-f5-2Lp" id="0Xx-1p-wiV"/>
+                <outlet property="icon" destination="s4n-dR-6tE" id="xyN-95-HHT"/>
+            </connections>
+            <point key="canvasLocation" x="138.40000000000001" y="-18.890554722638683"/>
+        </view>
+    </objects>
+</document>
