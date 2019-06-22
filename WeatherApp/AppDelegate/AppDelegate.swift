@@ -97,7 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         if let location = Locator.main.location
         {
             firstly {
-                when(fulfilled: WeatherApiClient.sharedDSWApi.darkSkyPromise(latitude: String(location.coordinate.latitude), longitude: String(location.coordinate.longitude)))
+                when(fulfilled: WeatherApiClient.sharedDSWApi.darkSkyPromiseURLSession(latitude: String(location.coordinate.latitude), longitude: String(location.coordinate.longitude)))
                 }.done { [weak self] in
                     guard let self = self else { return }
                     Notifications.displayWeatherChangeNotif(center: self.center)

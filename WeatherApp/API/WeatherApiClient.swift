@@ -50,6 +50,36 @@ final class WeatherApiClient {
         return baseUrl.appendingPathComponent(path)
     }
     
+    func darkSkyPromiseURLSession(latitude: String,
+                        longitude: String) -> Promise<Void>{
+        let location = latitude + "," + longitude
+        let url = makeDarkSkyAPIUrl(path: location)
+        WeatherStore.shared.weatherApiType = DarkSkyConfig.apiname
+        
+        return Promise { seal in
+            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+                do {
+                    if let jsonString = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any] {
+                        if let darkSkyWeather = DarkSkyWeather(JSON: jsonString) {
+                            UserDefaults.standard.set(String(darkSkyWeather.currentTemp ?? 0), forKey: "currentTemperature")
+                            UserDefaults.standard.set(darkSkyWeather.currentTempIcon ?? "rainy", forKey: "currentWeatherIcon")
+                            UserDefaults.standard.set(darkSkyWeather.forecastSum ?? "0", forKey: "forecastSummary")
+                            UserDefaults.standard.set(darkSkyWeather.forecastTempIcon ?? "rainy", forKey: "forecastWeatherIcon")
+                            seal.fulfill_()
+                    }
+                    } else if let error = error {
+                        seal.reject(error)
+                    } else {
+                        seal.reject(PMKError.invalidCallingConvention)
+                    }
+                } catch let error {
+                    seal.reject(error)
+                }
+            }
+            task.resume()
+        }
+    }
+    
     func darkSkyPromise(latitude: String,
                         longitude: String) -> Promise<Void>{
         let location = latitude + "," + longitude

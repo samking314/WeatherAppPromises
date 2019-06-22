@@ -84,7 +84,7 @@ class WeatherViewController: UIViewController, UIScrollViewDelegate, UITextField
         let queue = DispatchQueue(label: "com.WeatherApp.Background", qos: .background)
         queue.async {
             firstly {
-                when(fulfilled: WeatherApiClient.sharedDSWApi.darkSkyPromise(latitude: String(loc.coordinate.latitude), longitude: String(loc.coordinate.longitude)))
+                when(fulfilled: WeatherApiClient.sharedDSWApi.darkSkyPromiseURLSession(latitude: String(loc.coordinate.latitude), longitude: String(loc.coordinate.longitude)))
                 }.done { [weak self] in
                     self?.reloadUI()
                 }.ensure {
